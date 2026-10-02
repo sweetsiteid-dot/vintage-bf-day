@@ -1,0 +1,3130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#17110d">
+<meta name="description" content="A vintage love story made for Akbar.">
+<title>For Akbar — A Vintage Love Story</title>
+
+<!-- =========================
+     GOOGLE FONTS
+========================= -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Mono:wght@300;400;500&family=Italiana&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root{
+    --ink:#17110d;
+    --deep:#211711;
+    --brown:#38261c;
+    --brown2:#54382a;
+    --cream:#eadcc5;
+    --paper:#e8d8bd;
+    --paper2:#d9c5a4;
+    --gold:#b79662;
+    --gold2:#d0b47c;
+    --white:#f4ead8;
+    --muted:#a99578;
+    --shadow:rgba(0,0,0,.45);
+
+    --serif:"Cormorant Garamond",serif;
+    --display:"Italiana",serif;
+    --sans:"Montserrat",sans-serif;
+    --mono:"DM Mono",monospace;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--ink);
+    color:var(--cream);
+    font-family:var(--sans);
+    overflow-x:hidden;
+}
+
+button{
+    font:inherit;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================================================
+   GRAIN / VINTAGE TEXTURE
+========================================================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:9998;
+    pointer-events:none;
+    opacity:.075;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:9997;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at center,transparent 35%,rgba(0,0,0,.3) 100%);
+}
+
+/* =========================================================
+   PRELOADER
+========================================================= */
+
+#preloader{
+    position:fixed;
+    inset:0;
+    z-index:10000;
+    background:#110d0a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:1s ease;
+}
+
+.loader-wrap{
+    width:min(480px,80%);
+    text-align:center;
+}
+
+.loader-small{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:5px;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:25px;
+}
+
+.loader-title{
+    font-family:var(--display);
+    font-size:clamp(45px,10vw,90px);
+    letter-spacing:2px;
+    margin-bottom:35px;
+}
+
+.loader-line{
+    height:1px;
+    background:#4b3828;
+    overflow:hidden;
+}
+
+.loader-progress{
+    height:100%;
+    width:0;
+    background:var(--gold);
+    animation:loading 2.5s forwards;
+}
+
+.loader-number{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:3px;
+    color:var(--muted);
+    margin-top:14px;
+}
+
+@keyframes loading{
+    to{width:100%}
+}
+
+/* =========================================================
+   PIN SCREEN
+========================================================= */
+
+#pinScreen{
+    position:fixed;
+    inset:0;
+    z-index:9000;
+    background:
+        linear-gradient(rgba(18,12,8,.72),rgba(18,12,8,.88)),
+        url("foto4.jpg") center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    transition:1.2s ease;
+}
+
+.pin-box{
+    width:min(470px,100%);
+    padding:55px 35px;
+    text-align:center;
+    border:1px solid rgba(183,150,98,.35);
+    background:rgba(22,15,11,.78);
+    backdrop-filter:blur(18px);
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.6),
+        inset 0 0 60px rgba(255,255,255,.015);
+    position:relative;
+}
+
+.pin-box::before,
+.pin-box::after{
+    content:"";
+    position:absolute;
+    width:30px;
+    height:30px;
+    border-color:var(--gold);
+}
+
+.pin-box::before{
+    left:15px;
+    top:15px;
+    border-left:1px solid;
+    border-top:1px solid;
+}
+
+.pin-box::after{
+    right:15px;
+    bottom:15px;
+    border-right:1px solid;
+    border-bottom:1px solid;
+}
+
+.pin-eyebrow{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:5px;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:22px;
+}
+
+.pin-title{
+    font-family:var(--display);
+    font-size:clamp(46px,12vw,75px);
+    margin-bottom:10px;
+}
+
+.pin-subtitle{
+    font-family:var(--serif);
+    font-style:italic;
+    color:#bbaa91;
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+.pin-dots{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    margin-bottom:30px;
+}
+
+.pin-dot{
+    width:10px;
+    height:10px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    transition:.2s;
+}
+
+.pin-dot.active{
+    background:var(--gold);
+    box-shadow:0 0 14px rgba(183,150,98,.5);
+}
+
+.pin-pad{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    max-width:280px;
+    margin:auto;
+}
+
+.pin-key{
+    height:58px;
+    border:1px solid rgba(183,150,98,.25);
+    background:rgba(255,255,255,.025);
+    color:var(--cream);
+    cursor:pointer;
+    transition:.3s;
+    font-family:var(--serif);
+    font-size:22px;
+}
+
+.pin-key:hover{
+    background:var(--gold);
+    color:var(--ink);
+}
+
+.pin-key.zero{
+    grid-column:2;
+}
+
+.pin-message{
+    height:22px;
+    margin-top:20px;
+    color:#c17d68;
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:2px;
+}
+
+.pin-success{
+    animation:pinSuccess .8s ease;
+}
+
+@keyframes pinSuccess{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.03)}
+}
+
+/* =========================================================
+   OPENING ENVELOPE
+========================================================= */
+
+#opening{
+    position:fixed;
+    inset:0;
+    z-index:8000;
+    background:#17100c;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.opening-content{
+    text-align:center;
+    position:relative;
+    z-index:2;
+}
+
+.from-line{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:5px;
+    color:var(--gold);
+    margin-bottom:30px;
+}
+
+.envelope{
+    width:min(350px,75vw);
+    height:230px;
+    position:relative;
+    margin:0 auto 45px;
+    cursor:pointer;
+    perspective:1000px;
+}
+
+.envelope-back{
+    position:absolute;
+    inset:0;
+    background:#8e6846;
+    border:1px solid #b7956b;
+    box-shadow:0 30px 70px rgba(0,0,0,.6);
+}
+
+.envelope-front{
+    position:absolute;
+    inset:0;
+    background:#a47b53;
+    clip-path:polygon(0 0,50% 58%,100% 0,100% 100%,0 100%);
+    z-index:3;
+}
+
+.envelope-flap{
+    position:absolute;
+    inset:0;
+    background:#b08a60;
+    clip-path:polygon(0 0,100% 0,50% 64%);
+    transform-origin:top;
+    transition:1s ease;
+    z-index:5;
+}
+
+.envelope.open .envelope-flap{
+    transform:rotateX(180deg);
+}
+
+.seal{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:#542b24;
+    border:2px solid #b7956b;
+    position:absolute;
+    left:50%;
+    top:52%;
+    transform:translate(-50%,-50%);
+    z-index:7;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:var(--serif);
+    color:#d9bb8d;
+    font-size:19px;
+}
+
+.opening-title{
+    font-family:var(--display);
+    font-size:clamp(45px,11vw,90px);
+}
+
+.opening-sub{
+    font-family:var(--serif);
+    font-style:italic;
+    color:#b9a489;
+    font-size:19px;
+    margin-top:5px;
+}
+
+.tap-note{
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:4px;
+    color:var(--muted);
+    margin-top:30px;
+    text-transform:uppercase;
+}
+
+/* =========================================================
+   MAIN SITE
+========================================================= */
+
+#mainContent{
+    display:none;
+}
+
+section{
+    position:relative;
+    padding:130px 7vw;
+    overflow:hidden;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-label{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:4px;
+    color:var(--gold);
+    text-transform:uppercase;
+    margin-bottom:22px;
+}
+
+.section-label::before{
+    content:"";
+    width:35px;
+    height:1px;
+    background:var(--gold);
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+
+.nav{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:5000;
+    padding:22px 6vw;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    mix-blend-mode:normal;
+    transition:.5s;
+}
+
+.nav.scrolled{
+    background:rgba(20,13,9,.86);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(183,150,98,.12);
+    padding:15px 6vw;
+}
+
+.nav-logo{
+    font-family:var(--display);
+    font-size:25px;
+}
+
+.nav-logo span{
+    color:var(--gold);
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.nav-date{
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:3px;
+    color:var(--muted);
+}
+
+.music-control{
+    width:42px;
+    height:42px;
+    border:1px solid rgba(183,150,98,.5);
+    background:rgba(0,0,0,.25);
+    color:var(--cream);
+    border-radius:50%;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.music-control.playing::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    animation:musicPulse 1.5s infinite;
+}
+
+@keyframes musicPulse{
+    0%{transform:scale(1);opacity:.8}
+    100%{transform:scale(1.5);opacity:0}
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding-top:100px;
+    background:
+        linear-gradient(90deg,rgba(17,11,8,.95) 0%,rgba(17,11,8,.6) 55%,rgba(17,11,8,.35) 100%),
+        url("foto1.jpg") center/cover;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(90deg,transparent 49.9%,rgba(183,150,98,.09) 50%,transparent 50.1%),
+        linear-gradient(0deg,transparent 49.9%,rgba(183,150,98,.05) 50%,transparent 50.1%);
+    background-size:100% 100%,100% 100%;
+}
+
+.hero-content{
+    max-width:850px;
+    position:relative;
+    z-index:2;
+}
+
+.hero-overline{
+    font-family:var(--mono);
+    font-size:9px;
+    letter-spacing:6px;
+    color:var(--gold);
+    margin-bottom:28px;
+    text-transform:uppercase;
+}
+
+.hero-title{
+    font-family:var(--display);
+    font-weight:400;
+    font-size:clamp(80px,15vw,190px);
+    line-height:.78;
+    letter-spacing:-4px;
+}
+
+.hero-title em{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:.58em;
+    display:block;
+    margin-left:14%;
+    margin-top:25px;
+    letter-spacing:-1px;
+}
+
+.hero-copy{
+    max-width:510px;
+    margin-top:55px;
+    margin-left:2px;
+    font-family:var(--serif);
+    font-size:20px;
+    line-height:1.7;
+    color:#c9b99e;
+}
+
+.hero-meta{
+    margin-top:45px;
+    display:flex;
+    gap:50px;
+}
+
+.meta-item{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.meta-label{
+    font-family:var(--mono);
+    font-size:7px;
+    letter-spacing:3px;
+    color:var(--gold);
+}
+
+.meta-value{
+    font-family:var(--serif);
+    font-size:17px;
+}
+
+.hero-scroll{
+    position:absolute;
+    bottom:40px;
+    right:6vw;
+    writing-mode:vertical-rl;
+    font-family:var(--mono);
+    font-size:7px;
+    letter-spacing:4px;
+    color:#8d7b64;
+}
+
+/* =========================================================
+   INTRO QUOTE
+========================================================= */
+
+.quote-section{
+    background:#211710;
+    text-align:center;
+    padding-top:170px;
+    padding-bottom:170px;
+}
+
+.quote-mark{
+    font-family:var(--display);
+    font-size:110px;
+    color:var(--gold);
+    line-height:.5;
+}
+
+.big-quote{
+    max-width:850px;
+    margin:35px auto;
+    font-family:var(--serif);
+    font-size:clamp(35px,6vw,68px);
+    line-height:1.08;
+    font-weight:300;
+}
+
+.quote-credit{
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:4px;
+    color:var(--muted);
+}
+
+/* =========================================================
+   ABOUT / LETTER
+========================================================= */
+
+.letter-section{
+    background:
+        radial-gradient(circle at 85% 20%,rgba(183,150,98,.08),transparent 30%),
+        #18110d;
+}
+
+.letter-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:100px;
+    align-items:center;
+}
+
+.letter-heading{
+    font-family:var(--display);
+    font-size:clamp(55px,7vw,95px);
+    line-height:.9;
+}
+
+.letter-heading span{
+    display:block;
+    color:var(--gold);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:.6em;
+    margin-top:18px;
+}
+
+.letter-paper{
+    background:
+        linear-gradient(rgba(232,216,189,.96),rgba(232,216,189,.96)),
+        repeating-linear-gradient(0deg,transparent,transparent 31px,rgba(80,55,35,.08) 32px);
+    color:#302219;
+    padding:55px 50px;
+    min-height:520px;
+    position:relative;
+    box-shadow:25px 30px 80px rgba(0,0,0,.4);
+    transform:rotate(1deg);
+}
+
+.letter-paper::before{
+    content:"";
+    position:absolute;
+    inset:15px;
+    border:1px solid rgba(83,57,37,.22);
+    pointer-events:none;
+}
+
+.letter-top{
+    font-family:var(--mono);
+    font-size:7px;
+    letter-spacing:3px;
+    color:#80674c;
+    margin-bottom:35px;
+}
+
+.letter-title{
+    font-family:var(--display);
+    font-size:42px;
+    margin-bottom:25px;
+}
+
+.letter-body{
+    font-family:var(--serif);
+    font-size:19px;
+    line-height:1.75;
+}
+
+.signature{
+    font-family:var(--display);
+    font-size:35px;
+    margin-top:30px;
+    color:#684a34;
+}
+
+/* =========================================================
+   VINYL
+========================================================= */
+
+.vinyl-section{
+    background:#120d0a;
+    text-align:center;
+}
+
+.vinyl-wrap{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:100px;
+    margin-top:60px;
+}
+
+.vinyl{
+    width:330px;
+    height:330px;
+    border-radius:50%;
+    background:
+        repeating-radial-gradient(circle,#090909 0 3px,#151515 4px 6px);
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.8),
+        inset 0 0 0 12px #111;
+    position:relative;
+    animation:spin 6s linear infinite;
+    animation-play-state:paused;
+}
+
+.vinyl.playing{
+    animation-play-state:running;
+}
+
+.vinyl::before{
+    content:"";
+    position:absolute;
+    width:110px;
+    height:110px;
+    border-radius:50%;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    background:
+        radial-gradient(circle,#261a12 0 8px,#9b774b 9px 12px,#7d3f2e 13px 50px,#b89562 51px 53px,#6f4d31 54px 100%);
+}
+
+.vinyl::after{
+    content:"";
+    position:absolute;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#0d0d0d;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+.song-info{
+    text-align:left;
+    max-width:350px;
+}
+
+.song-label{
+    font-family:var(--mono);
+    color:var(--gold);
+    font-size:8px;
+    letter-spacing:4px;
+}
+
+.song-title{
+    font-family:var(--display);
+    font-size:50px;
+    margin:12px 0;
+}
+
+.song-artist{
+    font-family:var(--serif);
+    color:var(--muted);
+    font-size:20px;
+}
+
+.play-song{
+    margin-top:30px;
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--cream);
+    padding:14px 28px;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:3px;
+    transition:.3s;
+}
+
+.play-song:hover{
+    background:var(--gold);
+    color:var(--ink);
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery-section{
+    background:#20160f;
+}
+
+.gallery-heading{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:60px;
+}
+
+.gallery-title{
+    font-family:var(--display);
+    font-size:clamp(55px,8vw,100px);
+    line-height:.8;
+}
+
+.gallery-note{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--muted);
+    max-width:250px;
+    line-height:1.5;
+}
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:22px;
+}
+
+.photo-card{
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    background:#0d0a08;
+}
+
+.photo-card:nth-child(1){
+    grid-column:span 7;
+    height:570px;
+}
+
+.photo-card:nth-child(2){
+    grid-column:span 5;
+    height:400px;
+    margin-top:80px;
+}
+
+.photo-card:nth-child(3){
+    grid-column:span 4;
+    height:470px;
+}
+
+.photo-card:nth-child(4){
+    grid-column:span 8;
+    height:570px;
+    margin-top:-100px;
+}
+
+.photo-card:nth-child(5){
+    grid-column:span 5;
+    height:430px;
+}
+
+.photo-card:nth-child(6){
+    grid-column:span 7;
+    height:500px;
+    margin-top:80px;
+}
+
+.photo-card:nth-child(7){
+    grid-column:span 12;
+    height:650px;
+    margin-top:20px;
+}
+
+.photo-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:sepia(.2) saturate(.75) contrast(1.05);
+    transition:1s cubic-bezier(.2,.7,.2,1);
+}
+
+.photo-card:hover img{
+    transform:scale(1.07);
+    filter:sepia(.1) saturate(.95);
+}
+
+.photo-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent 50%,rgba(0,0,0,.75));
+    opacity:.7;
+}
+
+.photo-number{
+    position:absolute;
+    top:20px;
+    left:22px;
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:3px;
+    color:#eee1ca;
+}
+
+.photo-caption{
+    position:absolute;
+    bottom:25px;
+    left:25px;
+    right:25px;
+}
+
+.photo-caption h3{
+    font-family:var(--display);
+    font-size:35px;
+    font-weight:400;
+}
+
+.photo-caption p{
+    font-family:var(--serif);
+    color:#c9b89d;
+    margin-top:3px;
+}
+
+/* =========================================================
+   TIMELINE
+========================================================= */
+
+.timeline-section{
+    background:#17100c;
+}
+
+.timeline{
+    position:relative;
+    max-width:900px;
+    margin:80px auto 0;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:1px;
+    background:linear-gradient(var(--gold),transparent);
+}
+
+.timeline-item{
+    width:50%;
+    padding:0 55px 90px;
+    position:relative;
+}
+
+.timeline-item:nth-child(odd){
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    margin-left:50%;
+}
+
+.timeline-dot{
+    width:11px;
+    height:11px;
+    border:1px solid var(--gold);
+    border-radius:50%;
+    background:var(--ink);
+    position:absolute;
+    top:4px;
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-6px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-6px;
+}
+
+.timeline-date{
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:3px;
+    color:var(--gold);
+    margin-bottom:12px;
+}
+
+.timeline-title{
+    font-family:var(--display);
+    font-size:40px;
+}
+
+.timeline-text{
+    margin-top:8px;
+    font-family:var(--serif);
+    color:#aa9a83;
+    font-size:17px;
+    line-height:1.6;
+}
+
+/* =========================================================
+   GAME
+========================================================= */
+
+.game-section{
+    background:
+        linear-gradient(rgba(28,18,12,.92),rgba(28,18,12,.96)),
+        url("foto6.jpg") center/cover fixed;
+}
+
+.game-card{
+    max-width:800px;
+    margin:auto;
+    border:1px solid rgba(183,150,98,.3);
+    background:rgba(13,9,7,.75);
+    backdrop-filter:blur(15px);
+    padding:65px;
+    text-align:center;
+}
+
+.game-title{
+    font-family:var(--display);
+    font-size:clamp(50px,7vw,85px);
+}
+
+.game-sub{
+    font-family:var(--serif);
+    font-style:italic;
+    color:var(--muted);
+    margin:15px auto 40px;
+    max-width:500px;
+    font-size:18px;
+}
+
+.question{
+    font-family:var(--serif);
+    font-size:27px;
+    margin-bottom:25px;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.answer{
+    padding:17px;
+    border:1px solid rgba(183,150,98,.25);
+    background:transparent;
+    color:var(--cream);
+    cursor:pointer;
+    transition:.3s;
+    font-family:var(--sans);
+    font-size:11px;
+}
+
+.answer:hover{
+    border-color:var(--gold);
+    background:rgba(183,150,98,.1);
+}
+
+.answer.correct{
+    background:#40523d;
+    border-color:#7e9d76;
+}
+
+.answer.wrong{
+    background:#57352e;
+    border-color:#a06c5d;
+}
+
+.game-result{
+    margin-top:30px;
+    font-family:var(--serif);
+    font-size:20px;
+    min-height:30px;
+}
+
+/* =========================================================
+   LOVE METER
+========================================================= */
+
+.meter-section{
+    background:#211710;
+    text-align:center;
+}
+
+.meter{
+    width:min(500px,90%);
+    height:12px;
+    border:1px solid #765e42;
+    margin:50px auto 20px;
+    padding:2px;
+}
+
+.meter-fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,#76543b,#d0b47c);
+    transition:2s cubic-bezier(.2,.8,.2,1);
+}
+
+.meter-number{
+    font-family:var(--display);
+    font-size:75px;
+}
+
+.meter-text{
+    font-family:var(--serif);
+    font-size:19px;
+    color:var(--muted);
+}
+
+/* =========================================================
+   SECRET
+========================================================= */
+
+.secret-section{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    background:#110c09;
+}
+
+.secret-box{
+    max-width:700px;
+    margin:auto;
+}
+
+.lock-icon{
+    font-size:50px;
+    margin-bottom:25px;
+    opacity:.8;
+}
+
+.secret-title{
+    font-family:var(--display);
+    font-size:clamp(55px,9vw,100px);
+}
+
+.secret-sub{
+    font-family:var(--serif);
+    font-size:20px;
+    color:var(--muted);
+    max-width:500px;
+    margin:20px auto 35px;
+    line-height:1.6;
+}
+
+.secret-btn{
+    border:1px solid var(--gold);
+    background:transparent;
+    color:var(--cream);
+    padding:16px 30px;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:3px;
+    transition:.4s;
+}
+
+.secret-btn:hover{
+    background:var(--gold);
+    color:var(--ink);
+}
+
+.secret-message{
+    display:none;
+    margin-top:40px;
+    font-family:var(--serif);
+    font-size:30px;
+    line-height:1.5;
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+        linear-gradient(rgba(16,10,7,.45),rgba(16,10,7,.9)),
+        url("foto7.jpg") center/cover fixed;
+}
+
+.final-inner{
+    position:relative;
+    z-index:2;
+}
+
+.final-small{
+    font-family:var(--mono);
+    font-size:8px;
+    letter-spacing:5px;
+    color:var(--gold);
+}
+
+.final-title{
+    font-family:var(--display);
+    font-size:clamp(75px,14vw,180px);
+    line-height:.8;
+    margin:30px 0;
+}
+
+.final-title span{
+    display:block;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:.5em;
+    margin-top:25px;
+}
+
+.final-from{
+    font-family:var(--serif);
+    font-size:23px;
+    color:#c3b197;
+}
+
+.final-line{
+    width:80px;
+    height:1px;
+    background:var(--gold);
+    margin:30px auto;
+}
+
+.footer{
+    background:#0d0907;
+    padding:35px;
+    text-align:center;
+}
+
+.footer p{
+    font-family:var(--mono);
+    font-size:7px;
+    letter-spacing:3px;
+    color:#776957;
+}
+
+/* =========================================================
+   LIGHTBOX
+========================================================= */
+
+#lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(5,3,2,.95);
+    z-index:10001;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:30px;
+}
+
+.lightbox-image{
+    max-width:90vw;
+    max-height:85vh;
+    object-fit:contain;
+    box-shadow:0 30px 100px #000;
+}
+
+.lightbox-close{
+    position:absolute;
+    top:25px;
+    right:30px;
+    border:0;
+    background:none;
+    color:white;
+    font-size:35px;
+    cursor:pointer;
+}
+
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+
+.particle{
+    position:fixed;
+    pointer-events:none;
+    z-index:100;
+    color:var(--gold);
+    opacity:0;
+    animation:floatUp linear forwards;
+}
+
+@keyframes floatUp{
+    0%{
+        opacity:0;
+        transform:translateY(20px) rotate(0);
+    }
+    15%{opacity:.5}
+    100%{
+        opacity:0;
+        transform:translateY(-100vh) rotate(180deg);
+    }
+}
+
+/* =========================================================
+   REVEAL
+========================================================= */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:1s cubic-bezier(.2,.7,.2,1);
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:none;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:800px){
+
+    section{
+        padding:90px 6vw;
+    }
+
+    .nav-date{
+        display:none;
+    }
+
+    .hero{
+        min-height:100svh;
+        background-position:60% center;
+    }
+
+    .hero-title{
+        font-size:clamp(70px,22vw,130px);
+    }
+
+    .hero-copy{
+        font-size:18px;
+        margin-top:40px;
+    }
+
+    .hero-meta{
+        gap:30px;
+    }
+
+    .letter-grid{
+        grid-template-columns:1fr;
+        gap:60px;
+    }
+
+    .letter-paper{
+        transform:none;
+    }
+
+    .vinyl-wrap{
+        flex-direction:column;
+        gap:60px;
+    }
+
+    .vinyl{
+        width:260px;
+        height:260px;
+    }
+
+    .song-info{
+        text-align:center;
+    }
+
+    .gallery{
+        display:block;
+    }
+
+    .photo-card,
+    .photo-card:nth-child(n){
+        height:480px;
+        margin:0 0 20px;
+    }
+
+    .photo-card:nth-child(7){
+        height:520px;
+    }
+
+    .timeline::before{
+        left:10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        margin:0;
+        text-align:left;
+        padding-left:45px;
+        padding-right:0;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:5px;
+        right:auto;
+    }
+
+    .game-card{
+        padding:40px 20px;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .final-section{
+        min-height:90svh;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =========================================================
+     PRELOADER
+========================================================= -->
+
+<div id="preloader">
+    <div class="loader-wrap">
+        <div class="loader-small">A private archive</div>
+        <div class="loader-title">For Akbar</div>
+        <div class="loader-line">
+            <div class="loader-progress"></div>
+        </div>
+        <div class="loader-number" id="loaderNumber">000%</div>
+    </div>
+</div>
+
+<!-- =========================================================
+     PIN
+========================================================= -->
+
+<div id="pinScreen">
+
+    <div class="pin-box" id="pinBox">
+
+        <div class="pin-eyebrow">Restricted Love Archive</div>
+
+        <h1 class="pin-title">AKBAR</h1>
+
+        <p class="pin-subtitle">
+            four numbers. one little secret.
+        </p>
+
+        <div class="pin-dots">
+            <span class="pin-dot"></span>
+            <span class="pin-dot"></span>
+            <span class="pin-dot"></span>
+            <span class="pin-dot"></span>
+        </div>
+
+        <div class="pin-pad">
+
+            <button class="pin-key" data-number="1">1</button>
+            <button class="pin-key" data-number="2">2</button>
+            <button class="pin-key" data-number="3">3</button>
+
+            <button class="pin-key" data-number="4">4</button>
+            <button class="pin-key" data-number="5">5</button>
+            <button class="pin-key" data-number="6">6</button>
+
+            <button class="pin-key" data-number="7">7</button>
+            <button class="pin-key" data-number="8">8</button>
+            <button class="pin-key" data-number="9">9</button>
+
+            <button class="pin-key zero" data-number="0">0</button>
+
+        </div>
+
+        <div class="pin-message" id="pinMessage"></div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     OPENING
+========================================================= -->
+
+<div id="opening">
+
+    <div class="opening-content">
+
+        <div class="from-line">
+            DEANDRA → AKBAR
+        </div>
+
+        <div class="envelope" id="envelope">
+
+            <div class="envelope-back"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-front"></div>
+
+            <div class="seal">♡</div>
+
+        </div>
+
+        <h1 class="opening-title">
+            A Letter For You
+        </h1>
+
+        <p class="opening-sub">
+            open slowly. some things deserve time.
+        </p>
+
+        <div class="tap-note">
+            tap the envelope
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     AUDIO
+========================================================= -->
+
+<audio id="bgMusic" loop preload="auto">
+    <source src="shapeofmyheart.mp3" type="audio/mpeg">
+</audio>
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main id="mainContent">
+
+<!-- NAV -->
+
+<nav class="nav" id="nav">
+
+    <a href="#home" class="nav-logo">
+        D<span>♡</span>A
+    </a>
+
+    <div class="nav-right">
+
+        <div class="nav-date">
+            BOYFRIEND DAY · 2026
+        </div>
+
+        <button class="music-control" id="musicBtn">
+            ♪
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero" id="home">
+
+    <div class="container">
+
+        <div class="hero-content reveal">
+
+            <div class="hero-overline">
+                A vintage love archive
+            </div>
+
+            <h1 class="hero-title">
+                Happy
+                <em>Boyfriend Day</em>
+            </h1>
+
+            <p class="hero-copy">
+                For the boy who somehow turned ordinary days
+                into memories I never want to forget.
+                This little archive is for you, Akbar.
+            </p>
+
+            <div class="hero-meta">
+
+                <div class="meta-item">
+                    <span class="meta-label">FROM</span>
+                    <span class="meta-value">Deandra</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">TO</span>
+                    <span class="meta-value">Akbar</span>
+                </div>
+
+                <div class="meta-item">
+                    <span class="meta-label">SONG</span>
+                    <span class="meta-value">Shape of My Heart</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="hero-scroll">
+        SCROLL TO OPEN THE ARCHIVE ↓
+    </div>
+
+</section>
+
+<!-- =========================================================
+     QUOTE
+========================================================= -->
+
+<section class="quote-section">
+
+    <div class="container reveal">
+
+        <div class="quote-mark">“</div>
+
+        <div class="big-quote">
+            Maybe my favorite love story
+            is simply the one where
+            I get to keep choosing you.
+        </div>
+
+        <div class="quote-credit">
+            — FROM DEANDRA, WITH LOVE
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     LETTER
+========================================================= -->
+
+<section class="letter-section">
+
+    <div class="container">
+
+        <div class="letter-grid">
+
+            <div class="reveal">
+
+                <div class="section-label">
+                    01 · THE LETTER
+                </div>
+
+                <h2 class="letter-heading">
+                    Things
+                    <span>I never say enough.</span>
+                </h2>
+
+            </div>
+
+            <div class="letter-paper reveal">
+
+                <div class="letter-top">
+                    PRIVATE CORRESPONDENCE · 001
+                </div>
+
+                <h3 class="letter-title">
+                    Dear Akbar,
+                </h3>
+
+                <div class="letter-body">
+
+                    <p>
+                        Happy Boyfriend Day to the person who makes
+                        my world feel a little softer.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        I don't always know how to put everything
+                        I feel into words. Sometimes I joke,
+                        sometimes I act normal, but somewhere
+                        underneath all of that, I'm always grateful
+                        that it's you.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Thank you for being part of my days,
+                        for the little conversations, the random
+                        moments, the laughter, and even the quiet
+                        ones.
+                    </p>
+
+                    <br>
+
+                    <p>
+                        If I could keep one thing from all of this,
+                        I'd keep the feeling of having you in my life.
+                    </p>
+
+                </div>
+
+                <div class="signature">
+                    Deandra ♡
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     MUSIC
+========================================================= -->
+
+<section class="vinyl-section">
+
+    <div class="container reveal">
+
+        <div class="section-label">
+            02 · OUR SOUNDTRACK
+        </div>
+
+        <h2 class="gallery-title">
+            Press Play.
+        </h2>
+
+        <div class="vinyl-wrap">
+
+            <div class="vinyl" id="vinyl"></div>
+
+            <div class="song-info">
+
+                <div class="song-label">
+                    PLAYING FOR YOU
+                </div>
+
+                <div class="song-title">
+                    Shape of<br>My Heart
+                </div>
+
+                <div class="song-artist">
+                    Sting
+                </div>
+
+                <button class="play-song" id="playSong">
+                    PLAY OUR SONG ♫
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     GALLERY
+========================================================= -->
+
+<section class="gallery-section">
+
+    <div class="container">
+
+        <div class="gallery-heading reveal">
+
+            <div>
+
+                <div class="section-label">
+                    03 · THE ARCHIVE
+                </div>
+
+                <h2 class="gallery-title">
+                    Our<br>Frames.
+                </h2>
+
+            </div>
+
+            <p class="gallery-note">
+                Seven little pieces of time
+                that I decided were worth keeping.
+            </p>
+
+        </div>
+
+        <div class="gallery">
+
+            <div class="photo-card reveal" data-photo="foto1.jpg">
+
+                <img src="foto1.jpg" alt="Memory 01">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 01</div>
+
+                <div class="photo-caption">
+                    <h3>The Beginning</h3>
+                    <p>where another memory started.</p>
+                </div>
+
+            </div>
+
+            <div class="photo-card reveal" data-photo="foto2.jpg">
+
+                <img src="foto2.jpg" alt="Memory 02">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 02</div>
+
+                <div class="photo-caption">
+                    <h3>A Little Moment</h3>
+                    <p>small enough to miss, big enough to remember.</p>
+                </div>
+
+            </div>
+
+            <div class="photo-card reveal" data-photo="foto3.jpg">
+
+                <img src="foto3.jpg" alt="Memory 03">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 03</div>
+
+                <div class="photo-caption">
+                    <h3>Us</h3>
+                    <p>nothing complicated. just us.</p>
+                </div>
+
+            </div>
+
+            <div class="photo-card reveal" data-photo="foto4.jpg">
+
+                <img src="foto4.jpg" alt="Memory 04">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 04</div>
+
+                <div class="photo-caption">
+                    <h3>Worth Keeping</h3>
+                    <p>some pictures feel like home.</p>
+                </div>
+
+            </div>
+
+            <div class="photo-card reveal" data-photo="foto5.jpg">
+
+                <img src="foto5.jpg" alt="Memory 05">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 05</div>
+
+                <div class="photo-caption">
+                    <h3>That Smile</h3>
+                    <p>yes, this one.</p>
+                </div>
+
+            </div>
+
+            <div class="photo-card reveal" data-photo="foto6.jpg">
+
+                <img src="foto6.jpg" alt="Memory 06">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 06</div>
+
+                <div class="photo-caption">
+                    <h3>Another Day</h3>
+                    <p>another reason to be grateful.</p>
+                </div>
+
+            </div>
+
+            <div class="photo-card reveal" data-photo="foto7.jpg">
+
+                <img src="foto7.jpg" alt="Memory 07">
+
+                <div class="photo-overlay"></div>
+
+                <div class="photo-number">NO. 07 · FAVORITE</div>
+
+                <div class="photo-caption">
+                    <h3>If I Could Keep One</h3>
+                    <p>I'd probably keep them all.</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     TIMELINE
+========================================================= -->
+
+<section class="timeline-section">
+
+    <div class="container">
+
+        <div class="section-label reveal">
+            04 · THE STORY
+        </div>
+
+        <h2 class="gallery-title reveal">
+            Little<br>Chapters.
+        </h2>
+
+        <div class="timeline">
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    CHAPTER 01
+                </div>
+
+                <h3 class="timeline-title">
+                    Hello.
+                </h3>
+
+                <p class="timeline-text">
+                    Somewhere between an ordinary hello
+                    and an ordinary conversation,
+                    something started becoming special.
+                </p>
+
+            </div>
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    CHAPTER 02
+                </div>
+
+                <h3 class="timeline-title">
+                    Closer.
+                </h3>
+
+                <p class="timeline-text">
+                    Then came the moments that made talking
+                    to you feel less like a habit
+                    and more like a favorite part of my day.
+                </p>
+
+            </div>
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    CHAPTER 03
+                </div>
+
+                <h3 class="timeline-title">
+                    Us.
+                </h3>
+
+                <p class="timeline-text">
+                    And suddenly, there was an “us” —
+                    a tiny word carrying a very big feeling.
+                </p>
+
+            </div>
+
+            <div class="timeline-item reveal">
+
+                <div class="timeline-dot"></div>
+
+                <div class="timeline-date">
+                    CHAPTER 04
+                </div>
+
+                <h3 class="timeline-title">
+                    Still.
+                </h3>
+
+                <p class="timeline-text">
+                    And here we are. Still making memories,
+                    still laughing at random things,
+                    still choosing each other.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     GAME
+========================================================= -->
+
+<section class="game-section">
+
+    <div class="container">
+
+        <div class="game-card reveal">
+
+            <div class="section-label">
+                05 · PRIVATE GAME
+            </div>
+
+            <h2 class="game-title">
+                How Well<br>Do You Know Me?
+            </h2>
+
+            <p class="game-sub">
+                Don't worry, there's no pressure.
+                Except maybe a tiny bit.
+            </p>
+
+            <div id="questionBox">
+
+                <div class="question" id="question">
+                    What's my favorite thing about you?
+                </div>
+
+                <div class="answers">
+
+                    <button class="answer" data-correct="false">
+                        Your ability to annoy me
+                    </button>
+
+                    <button class="answer" data-correct="true">
+                        The way you make me feel safe
+                    </button>
+
+                    <button class="answer" data-correct="false">
+                        Your suspiciously bad jokes
+                    </button>
+
+                    <button class="answer" data-correct="false">
+                        Your talent for stealing attention
+                    </button>
+
+                </div>
+
+                <div class="game-result" id="gameResult"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     LOVE METER
+========================================================= -->
+
+<section class="meter-section">
+
+    <div class="container reveal">
+
+        <div class="section-label" style="justify-content:center;">
+            06 · SCIENTIFICALLY UNNECESSARY
+        </div>
+
+        <h2 class="gallery-title">
+            Love Meter
+        </h2>
+
+        <div class="meter">
+
+            <div class="meter-fill" id="meterFill"></div>
+
+        </div>
+
+        <div class="meter-number" id="meterNumber">
+            0%
+        </div>
+
+        <p class="meter-text">
+            Error: measurement exceeds maximum capacity.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     SECRET
+========================================================= -->
+
+<section class="secret-section">
+
+    <div class="container">
+
+        <div class="secret-box reveal">
+
+            <div class="lock-icon">
+                ♧
+            </div>
+
+            <div class="section-label" style="justify-content:center;">
+                07 · ONE LAST SECRET
+            </div>
+
+            <h2 class="secret-title">
+                There's More.
+            </h2>
+
+            <p class="secret-sub">
+                You made it this far.
+                So I think you deserve one last thing.
+            </p>
+
+            <button class="secret-btn" id="secretBtn">
+                UNLOCK THE SECRET
+            </button>
+
+            <div class="secret-message" id="secretMessage">
+
+                If I had to choose one person
+                to make all these little memories with,
+                I'd choose you again.
+
+                <br><br>
+
+                <span style="font-family:var(--display);color:var(--gold);">
+                    Always you, Akbar.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =========================================================
+     FINAL
+========================================================= -->
+
+<section class="final-section">
+
+    <div class="final-inner reveal">
+
+        <div class="final-small">
+            END OF THE ARCHIVE · BUT NOT THE STORY
+        </div>
+
+        <h2 class="final-title">
+            For You,
+            <span>Always.</span>
+        </h2>
+
+        <div class="final-line"></div>
+
+        <div class="final-from">
+            With all my love,<br>
+            <strong>Deandra</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<footer class="footer">
+
+    <p>
+        MADE WITH LOVE · DEANDRA × AKBAR · BOYFRIEND DAY
+    </p>
+
+</footer>
+
+</main>
+
+<!-- =========================================================
+     LIGHTBOX
+========================================================= -->
+
+<div id="lightbox">
+
+    <button class="lightbox-close" id="lightboxClose">
+        ×
+    </button>
+
+    <img
+        class="lightbox-image"
+        id="lightboxImage"
+        src=""
+        alt="Expanded memory"
+    >
+
+</div>
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const CONFIG = {
+
+    PIN: "1111",
+
+    music: "shapeofmyheart.mp3",
+
+    photos: [
+        "foto1.jpg",
+        "foto2.jpg",
+        "foto3.jpg",
+        "foto4.jpg",
+        "foto5.jpg",
+        "foto6.jpg",
+        "foto7.jpg"
+    ],
+
+    from: "Deandra",
+
+    to: "Akbar"
+
+};
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const preloader =
+    document.getElementById("preloader");
+
+const loaderNumber =
+    document.getElementById("loaderNumber");
+
+const pinScreen =
+    document.getElementById("pinScreen");
+
+const pinBox =
+    document.getElementById("pinBox");
+
+const pinMessage =
+    document.getElementById("pinMessage");
+
+const pinDots =
+    document.querySelectorAll(".pin-dot");
+
+const pinKeys =
+    document.querySelectorAll(".pin-key");
+
+const opening =
+    document.getElementById("opening");
+
+const envelope =
+    document.getElementById("envelope");
+
+const mainContent =
+    document.getElementById("mainContent");
+
+const music =
+    document.getElementById("bgMusic");
+
+const musicBtn =
+    document.getElementById("musicBtn");
+
+const playSong =
+    document.getElementById("playSong");
+
+const vinyl =
+    document.getElementById("vinyl");
+
+const nav =
+    document.getElementById("nav");
+
+const secretBtn =
+    document.getElementById("secretBtn");
+
+const secretMessage =
+    document.getElementById("secretMessage");
+
+const meterFill =
+    document.getElementById("meterFill");
+
+const meterNumber =
+    document.getElementById("meterNumber");
+
+const lightbox =
+    document.getElementById("lightbox");
+
+const lightboxImage =
+    document.getElementById("lightboxImage");
+
+const lightboxClose =
+    document.getElementById("lightboxClose");
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+let loaderProgress = 0;
+
+const loaderInterval = setInterval(() => {
+
+    loaderProgress += Math.floor(
+        Math.random() * 5
+    ) + 1;
+
+    if(loaderProgress >= 100){
+
+        loaderProgress = 100;
+
+        clearInterval(loaderInterval);
+
+        loaderNumber.textContent =
+            "100%";
+
+        setTimeout(() => {
+
+            preloader.style.opacity = "0";
+
+            setTimeout(() => {
+
+                preloader.style.display = "none";
+
+            },1000);
+
+        },400);
+
+    }
+
+    loaderNumber.textContent =
+        String(loaderProgress).padStart(3,"0") + "%";
+
+},60);
+
+/* =========================================================
+   PIN SYSTEM
+========================================================= */
+
+let enteredPin = "";
+
+pinKeys.forEach(key => {
+
+    key.addEventListener("click", () => {
+
+        if(enteredPin.length >= 4){
+            return;
+        }
+
+        enteredPin +=
+            key.dataset.number;
+
+        updatePinDots();
+
+        if(enteredPin.length === 4){
+
+            setTimeout(checkPin,250);
+
+        }
+
+    });
+
+});
+
+function updatePinDots(){
+
+    pinDots.forEach((dot,index) => {
+
+        dot.classList.toggle(
+            "active",
+            index < enteredPin.length
+        );
+
+    });
+
+}
+
+function checkPin(){
+
+    if(enteredPin === CONFIG.PIN){
+
+        pinMessage.textContent =
+            "ACCESS GRANTED ♡";
+
+        pinMessage.style.color =
+            "#b79662";
+
+        pinBox.classList.add(
+            "pin-success"
+        );
+
+        setTimeout(() => {
+
+            pinScreen.style.opacity = "0";
+
+            setTimeout(() => {
+
+                pinScreen.style.display = "none";
+
+                opening.style.display = "flex";
+
+            },1000);
+
+        },800);
+
+    }else{
+
+        pinMessage.textContent =
+            "WRONG CODE · TRY AGAIN";
+
+        enteredPin = "";
+
+        updatePinDots();
+
+        pinBox.animate(
+            [
+                {transform:"translateX(0)"},
+                {transform:"translateX(-8px)"},
+                {transform:"translateX(8px)"},
+                {transform:"translateX(0)"}
+            ],
+            {
+                duration:300
+            }
+        );
+
+    }
+
+}
+
+/* =========================================================
+   ENVELOPE
+========================================================= */
+
+envelope.addEventListener("click", () => {
+
+    if(envelope.classList.contains("open")){
+        return;
+    }
+
+    envelope.classList.add("open");
+
+    setTimeout(() => {
+
+        opening.style.opacity = "0";
+
+        setTimeout(() => {
+
+            opening.style.display = "none";
+
+            mainContent.style.display = "block";
+
+            startExperience();
+
+        },1000);
+
+    },1300);
+
+});
+
+/* =========================================================
+   START EXPERIENCE
+========================================================= */
+
+function startExperience(){
+
+    document.body.style.overflowX =
+        "hidden";
+
+    createParticles();
+
+    revealObserver();
+
+    setTimeout(() => {
+
+        music.volume = .35;
+
+        music.play()
+            .then(() => {
+
+                musicBtn.classList.add(
+                    "playing"
+                );
+
+                vinyl.classList.add(
+                    "playing"
+                );
+
+            })
+            .catch(() => {});
+
+    },700);
+
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+function toggleMusic(){
+
+    if(music.paused){
+
+        music.play()
+            .then(() => {
+
+                musicBtn.classList.add(
+                    "playing"
+                );
+
+                vinyl.classList.add(
+                    "playing"
+                );
+
+            })
+            .catch(() => {});
+
+    }else{
+
+        music.pause();
+
+        musicBtn.classList.remove(
+            "playing"
+        );
+
+        vinyl.classList.remove(
+            "playing"
+        );
+
+    }
+
+}
+
+musicBtn.addEventListener(
+    "click",
+    toggleMusic
+);
+
+playSong.addEventListener(
+    "click",
+    toggleMusic
+);
+
+music.addEventListener(
+    "play",
+    () => {
+
+        musicBtn.classList.add(
+            "playing"
+        );
+
+        vinyl.classList.add(
+            "playing"
+        );
+
+        playSong.textContent =
+            "PAUSE OUR SONG ♫";
+
+    }
+);
+
+music.addEventListener(
+    "pause",
+    () => {
+
+        musicBtn.classList.remove(
+            "playing"
+        );
+
+        vinyl.classList.remove(
+            "playing"
+        );
+
+        playSong.textContent =
+            "PLAY OUR SONG ♫";
+
+    }
+);
+
+/* =========================================================
+   NAV SCROLL
+========================================================= */
+
+window.addEventListener("scroll", () => {
+
+    if(window.scrollY > 80){
+
+        nav.classList.add("scrolled");
+
+    }else{
+
+        nav.classList.remove("scrolled");
+
+    }
+
+});
+
+/* =========================================================
+   REVEAL OBSERVER
+========================================================= */
+
+function revealObserver(){
+
+    const reveals =
+        document.querySelectorAll(".reveal");
+
+    const observer =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if(entry.isIntersecting){
+
+                        entry.target
+                            .classList
+                            .add("visible");
+
+                    }
+
+                });
+
+            },
+            {
+                threshold:.12
+            }
+        );
+
+    reveals.forEach(el => {
+
+        observer.observe(el);
+
+    });
+
+}
+
+/* =========================================================
+   PHOTO LIGHTBOX
+========================================================= */
+
+const photoCards =
+    document.querySelectorAll(".photo-card");
+
+photoCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+
+        const src =
+            card.dataset.photo;
+
+        lightboxImage.src = src;
+
+        lightbox.style.display = "flex";
+
+        document.body.style.overflow =
+            "hidden";
+
+    });
+
+});
+
+function closeLightbox(){
+
+    lightbox.style.display = "none";
+
+    document.body.style.overflow =
+        "auto";
+
+}
+
+lightboxClose.addEventListener(
+    "click",
+    closeLightbox
+);
+
+lightbox.addEventListener(
+    "click",
+    event => {
+
+        if(event.target === lightbox){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(event.key === "Escape"){
+
+            closeLightbox();
+
+        }
+
+    }
+);
+
+/* =========================================================
+   LOVE GAME
+========================================================= */
+
+const answers =
+    document.querySelectorAll(".answer");
+
+const gameResult =
+    document.getElementById("gameResult");
+
+answers.forEach(answer => {
+
+    answer.addEventListener("click", () => {
+
+        answers.forEach(item => {
+
+            item.disabled = true;
+
+        });
+
+        if(answer.dataset.correct === "true"){
+
+            answer.classList.add("correct");
+
+            gameResult.textContent =
+                "Correct. You know me better than you think. ♡";
+
+        }else{
+
+            answer.classList.add("wrong");
+
+            gameResult.textContent =
+                "Wrong... but I'll forgive you. ♡";
+
+            answers.forEach(item => {
+
+                if(item.dataset.correct === "true"){
+
+                    item.classList.add(
+                        "correct"
+                    );
+
+                }
+
+            });
+
+        }
+
+    });
+
+});
+
+/* =========================================================
+   LOVE METER
+========================================================= */
+
+let meterStarted = false;
+
+const meterObserver =
+    new IntersectionObserver(
+        entries => {
+
+            entries.forEach(entry => {
+
+                if(
+                    entry.isIntersecting &&
+                    !meterStarted
+                ){
+
+                    meterStarted = true;
+
+                    animateMeter();
+
+                }
+
+            });
+
+        },
+        {
+            threshold:.5
+        }
+    );
+
+meterObserver.observe(
+    meterFill
+);
+
+function animateMeter(){
+
+    let number = 0;
+
+    meterFill.style.width = "100%";
+
+    const interval =
+        setInterval(() => {
+
+            number++;
+
+            meterNumber.textContent =
+                number + "%";
+
+            if(number >= 100){
+
+                clearInterval(interval);
+
+                setTimeout(() => {
+
+                    meterNumber.textContent =
+                        "∞%";
+
+                },500);
+
+            }
+
+        },18);
+
+}
+
+/* =========================================================
+   SECRET
+========================================================= */
+
+secretBtn.addEventListener(
+    "click",
+    () => {
+
+        secretBtn.style.display =
+            "none";
+
+        secretMessage.style.display =
+            "block";
+
+        secretMessage.animate(
+            [
+                {
+                    opacity:0,
+                    transform:"translateY(20px)"
+                },
+                {
+                    opacity:1,
+                    transform:"translateY(0)"
+                }
+            ],
+            {
+                duration:900,
+                easing:"ease"
+            }
+        );
+
+        for(let i=0;i<25;i++){
+
+            setTimeout(
+                createParticle,
+                i * 80
+            );
+
+        }
+
+    }
+);
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+const particleSymbols = [
+    "✦",
+    "♡",
+    "·",
+    "✧",
+    "⌁"
+];
+
+function createParticle(){
+
+    const particle =
+        document.createElement("div");
+
+    particle.className =
+        "particle";
+
+    particle.textContent =
+        particleSymbols[
+            Math.floor(
+                Math.random() *
+                particleSymbols.length
+            )
+        ];
+
+    particle.style.left =
+        Math.random() * 100 + "vw";
+
+    particle.style.bottom =
+        "-20px";
+
+    particle.style.fontSize =
+        (Math.random() * 10 + 7) + "px";
+
+    particle.style.animationDuration =
+        (Math.random() * 5 + 5) + "s";
+
+    document.body.appendChild(
+        particle
+    );
+
+    setTimeout(() => {
+
+        particle.remove();
+
+    },10000);
+
+}
+
+function createParticles(){
+
+    setInterval(() => {
+
+        if(
+            document.visibilityState ===
+            "visible"
+        ){
+
+            createParticle();
+
+        }
+
+    },850);
+
+}
+
+/* =========================================================
+   PARALLAX
+========================================================= */
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const hero =
+            document.querySelector(".hero");
+
+        if(!hero) return;
+
+        const y =
+            window.scrollY;
+
+        if(y < window.innerHeight){
+
+            hero.style.backgroundPosition =
+                `center ${50 + y * .015}%`;
+
+        }
+
+    }
+);
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+document
+    .querySelectorAll("img")
+    .forEach(img => {
+
+        img.addEventListener(
+            "error",
+            () => {
+
+                img.style.background =
+                    "#302219";
+
+                img.style.objectFit =
+                    "contain";
+
+                img.alt =
+                    "Photo not found";
+
+            }
+        );
+
+    });
+
+/* =========================================================
+   KEYBOARD SHORTCUT
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    event => {
+
+        if(
+            event.key.toLowerCase() === "m" &&
+            mainContent.style.display === "block"
+        ){
+
+            toggleMusic();
+
+        }
+
+    }
+);
+
+/* =========================================================
+   PREVENT CONTEXT MENU ON PHOTOS
+========================================================= */
+
+photoCards.forEach(card => {
+
+    card.addEventListener(
+        "contextmenu",
+        event => {
+
+            event.preventDefault();
+
+        }
+    );
+
+});
+
+/* =========================================================
+   SMOOTH INTERNAL LINKS
+========================================================= */
+
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
+
+        link.addEventListener(
+            "click",
+            event => {
+
+                const target =
+                    document.querySelector(
+                        link.getAttribute("href")
+                    );
+
+                if(target){
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+                }
+
+            }
+        );
+
+    });
+
+/* =========================================================
+   FINAL CONSOLE
+========================================================= */
+
+console.log(
+    "%c♡ PRIVATE LOVE ARCHIVE ♡",
+    "font-size:18px;color:#b79662;"
+);
+
+console.log(
+    "Made by Deandra for Akbar."
+);
+
+</script>
+
+</body>
+  </html>
